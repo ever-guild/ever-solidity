@@ -1,13 +1,12 @@
-# **TON Solidity API**
+# **Ever Solidity**
 
-TON Solidity compiler expands Solidity language with different API functions to facilitate TON
-contract development.
+Ever Solidity compiler expands Solidity language with different API functions to facilitate contract development.
 
 ## Table of Contents
 
 * [Compiler version](#compiler-version)
-* [TON specific types](#ton-specific-types)
-  * [TON units](#ton-units)
+* [Specific types](#specific-types)
+  * [Units](#units)
   * [TvmCell](#tvmcell)
     * [\<TvmCell\>.depth()](#tvmcelldepth)
     * [\<TvmCell\>.dataSize()](#tvmcelldatasize)
@@ -68,7 +67,7 @@ contract development.
     * [\<vector(Type)\>.pop()](#vectortypepop)
     * [\<vector(Type)\>.length()](#vectortypelength)
     * [\<vector(Type)\>.empty()](#vectortypeempty)
-* [TON specific control structures](#ton-specific-control-structures)
+* [Specific control structures](#specific-control-structures)
   * [Range-based for loop](#range-based-for-loop)
   * [repeat](#repeat)
   * [try-catch](#trycatch)
@@ -274,7 +273,7 @@ contract development.
 
 ### Compiler version
 
-TON Solidity compiler add its current version to the generated code. This version can be obtained:
+Ever Solidity compiler add its current version to the generated code. This version can be obtained:
 
 1) using [tvm_linker](https://github.com/tonlabs/TVM-linker#2-decoding-of-boc-messages-prepared-externally) from a `*.tvc` file:
 
@@ -288,13 +287,13 @@ tvm_linker decode --tvm <tvc-file>
 tonos-cli decode tvc [--tvc] [--boc] <input>
 ```
 
-### TON specific types
+### Specific types
 
-TON Solidity compiler expands functionality of some existing types and adds several new TVM specific types: TvmCell, TvmSlice, TvmBuilder and ExtraCurrencyCollection. Full description of these types can be found in [TVM][1] and [TON Blockchain][2] specifications.
+Ever Solidity compiler expands functionality of some existing types and adds several new TVM specific types: TvmCell, TvmSlice, TvmBuilder and ExtraCurrencyCollection. Full description of these types can be found in [TVM][1] and [TON Blockchain][2] specifications.
 
-#### TON units
+#### Units
 
-A literal number can take a suffix to specify a subdenomination of TON currency, where numbers without a postfix are assumed to be nanotons.
+A literal number can take a suffix to specify a subdenomination of currency, where numbers without a postfix are assumed to be nanotons.
 
 ```TVMSolidity
 uint a0 = 1 nano; // a0 == 1
@@ -645,7 +644,7 @@ Skips the first `length` bits and `refs` references from the `TvmSlice`.
 
 #### TvmBuilder
 
-`TvmBuilder` represents *TVM cell builder* ([TVM][1] - 1.1.3). TON Solidity compiler defines the following
+`TvmBuilder` represents *TVM cell builder* ([TVM][1] - 1.1.3). Ever Solidity compiler defines the following
 functions to work with this type:
 
 ##### \<TvmBuilder\>.toSlice()
@@ -994,7 +993,7 @@ vector(uint) vect;
 bool is_empty = vect.empty();
 ```
 
-### TON specific control structures
+### Specific control structures
 
 ### Range-based for loop
 
@@ -1376,7 +1375,7 @@ If `bytes` object has less than **N** bytes, extra bytes are padded with zero bi
 
 #### string
 
-TON Solidity compiler expands `string` type with the following functions:
+Ever Solidity compiler expands `string` type with the following functions:
 
 **Note**: Due to VM restrictions string length can't exceed `1024 * 127 = 130048` bytes.
 
@@ -1558,7 +1557,7 @@ If `string` object has less than **N** bytes, extra bytes are padded with zero b
 #### address
 
 `address` represents different types of TVM addresses: **addr_none**, **addr_extern**,
-**addr_std** and **addr_var**. TON Solidity compiler expands `address` type with the following
+**addr_std** and **addr_var**. Ever Solidity compiler expands `address` type with the following
 members and functions:
 
 ##### Object creating
@@ -1771,7 +1770,7 @@ See example of `address.transfer()` usage:
 
 #### mapping
 
-TON Solidity compiler expands `mapping` type with the following functions. In examples
+Ever Solidity compiler expands `mapping` type with the following functions. In examples
 below `\<map\>` defines the object of `mapping(KeyType => ValueType)` type.
 
 Address, bytes, string, bool, contract, enum, fixed bytes, integer and struct types can
@@ -2146,7 +2145,7 @@ contract MyContract {
 
 ##### Function call via object
 
-In TON solidity **arguments of a function call passed by value not by
+In Ever Solidity **arguments of a function call passed by value not by
 reference**. It's effective for numbers and even for huge arrays.
 See ([TVM][1] - A.2.3.2).
 **But if a library function is called like `obj.func(b, c)` then the
@@ -2202,7 +2201,7 @@ contract MyContract {
 
 ### Import
 
-TON Solidity compiler allows user to import remote files using link starting with `http`.
+Ever Solidity compiler allows user to import remote files using link starting with `http`.
 If import file name starts with `http`, then compiler tries to download the file using this
 link and saves it to the folder `.solc_imports`. If compiler fails to create this folder or
 to download the file, then an error is emitted.
@@ -2765,7 +2764,7 @@ function f(uint n) public responsible pure {
 
 ### External function calls
 
-TON Solidity compiler allows specifying different parameters of the outbound internal message that
+Ever Solidity compiler allows specifying different parameters of the outbound internal message that
 is sent via external function call. Note, all external function calls are asynchronous, so
 callee function will be called after termination of the current transaction.
 `value`, `currencies`, `bounce` or `flag` options can be set. See [\<address\>.transfer()](#addresstransfer)
@@ -2849,7 +2848,7 @@ and [4.1_CurrencyExchange.sol](https://github.com/tonlabs/samples/blob/master/so
 
 #### Synchronous calls
 
-TON Solidity compiler allows user to perform synchronous calls. To do it user should call a remote contract
+Ever Solidity compiler allows user to perform synchronous calls. To do it user should call a remote contract
 function with `.await` suffix. Example:
 
 ```TVMSolidity
@@ -3494,7 +3493,7 @@ uint16 dataDepth = data.depth();
 uint256 hash = tvm.stateInitHash(codeHash, dataHash, codeDepth, dataDepth);
 ```
 
-See also [internal doc](https://github.com/tonlabs/TON-Solidity-Compiler/blob/master/docs/internal/stateInit_hash.md) to read more about this
+See also [internal doc](docs/internal/stateInit_hash.md) to read more about this
 function mechanics.
 
 ##### Deploy via new
@@ -4174,7 +4173,7 @@ Returns the starting logical time of the current block.
 
 The pseudorandom number generator uses the random seed. The
 initial value of the random seed before a smart contract execution in
-TON Blockchain is a hash of the smart contract address and the global
+Everscale is a hash of the smart contract address and the global
 block random seed. If there are several runs of the same smart contract
 inside a block, then all of these runs will have the same random seed.
 This can be fixed, for example, by running `rnd.shuffle()` (without
