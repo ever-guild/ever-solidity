@@ -1,9 +1,10 @@
-TVM Solidity Compiler allows user to calculate hash of the stateInit using data and code cells. 
-According to section 1.1.3 and 1.1.4 of the [TBLKCH][2] representation hash of the stateInit Cell *c*
-is calculated with this formula:
+# State Init hash
 
-```Math
-  Hash(c) = SHA256(CellRepr(c))
+Ever Solidity Compiler allows user to calculate hash of the stateInit using data and code cells. 
+According to section 1.1.3 and 1.1.4 of the [TBLKCH][2] representation hash of the stateInit Cell *c* is calculated with this formula:
+
+```math
+Hash(c) = SHA256(CellRepr(c))
 ```
 
 where `CellRepr` is  “standard representation” of the Cell and consists of the following data:
@@ -16,8 +17,8 @@ where `CellRepr` is  “standard representation” of the Cell and consists of t
    while the last bit of *d2* is the completion tag, equal to one if l is not
    divisible by eight. Therefore,
 
-```
-   d2 = 2 * floor(l/8) + [l mod 8 /= 0] = floor(l/8) + ceil(l/8)
+```math
+d2 = 2 * floor(l/8) + [l mod 8 /= 0] = floor(l/8) + ceil(l/8)
 ```
 
 StateInit structure:
