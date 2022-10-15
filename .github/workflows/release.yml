@@ -88,6 +88,6 @@ jobs:
           draft: false
           files: |
             sold-${{ github.ref_name }}-${{ matrix.platform.name }}.tar.gz
-          prerelease: false
+          prerelease: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
