@@ -16,7 +16,10 @@ use std::process::Command;
 fn main() {
     println!("cargo:rerun-if-changed=../compiler/");
     if cfg!(target_os = "windows") {
-        let install_deps = Command::new("cmake").arg("-P").arg("../compiler/scripts/install_deps.cmake").output();
+        let install_deps = Command::new("cmake")
+            .arg("-P")
+            .arg("../compiler/scripts/install_deps.cmake")
+            .output();
         assert!(install_deps.is_ok());
     }
 
