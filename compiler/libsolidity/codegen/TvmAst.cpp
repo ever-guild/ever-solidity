@@ -545,6 +545,7 @@ Pointer<GenOpcode> gen(const std::string& cmd) {
 		{"DEC", {1, 1}},
 		{"DICTEMPTY", {1, 1, true}},
 		{"ENDC", {1, 1}},
+		{"ENDXC", {1, 1}},
 		{"EQINT", {1, 1, true}},
 		{"FITS", {1, 1}},
 		{"GASTOGRAM", {1, 1, true}},

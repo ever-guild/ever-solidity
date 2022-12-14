@@ -5090,6 +5090,15 @@ MemberList::MemberMap TvmBuilderType::nativeMembers(const ContractDefinition *) 
 			false, StateMutability::Pure
 	));
 
+	members.emplace_back("toExotic", TypeProvider::function(
+			TypePointers{},
+			TypePointers{TypeProvider::tvmcell()},
+			strings{},
+			strings{string()},
+			FunctionType::Kind::TVMBuilderMethods,
+			false, StateMutability::Pure
+	));
+
 	members.emplace_back("toSlice", TypeProvider::function(
 			TypePointers{},
 			TypePointers{TypeProvider::tvmslice()},
