@@ -1766,6 +1766,12 @@ bool FunctionCallCompiler::checkForTvmBuilderMethods(MemberAccess const &_node, 
 		return true;
 	}
 
+	if (_node.memberName() == "toExotic") {
+		acceptExpr(&_node.expression());
+		m_pusher.push(-1+1, "ENDXC");
+		return true;
+	}
+
 	if (_node.memberName() == "toSlice") {
 		acceptExpr(&_node.expression());
 		m_pusher.push(-1+1, "ENDC");
