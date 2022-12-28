@@ -33,3 +33,10 @@ release: target/release/$(TARGET)
 	mkdir -p release
 	cp target/release/$(TARGET) release/
 
+docker-build:
+	docker build --tag ghcr.io/everscaleguild/ever-solidity:0.66.0 --file Dockerfile release
+
+docker-push:
+	docker tag ghcr.io/everscaleguild/ever-solidity:0.66.0 ghcr.io/everscaleguild/ever-solidity:latest
+	docker push ghcr.io/everscaleguild/ever-solidity:0.66.0
+	docker push ghcr.io/everscaleguild/ever-solidity:latest
