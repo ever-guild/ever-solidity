@@ -9,6 +9,15 @@
 - [Getting started with smart contracts development](https://docs.everscale.network/develop/smart-contract/getting-started/)
 - [Changelog](changelog.md)
 
+## Use via `docker`
+
+```shell
+docker pull ghcr.io/everscaleguild/ever-solidity:0.66.0
+docker tag ghcr.io/everscaleguild/ever-solidity:0.66.0 sold
+docker run --rm -it sold --help
+docker run --rm -it -v $(pwd):/src sold --include-path inc Ext.tsol
+```
+
 ## Build
 
 ```shell
