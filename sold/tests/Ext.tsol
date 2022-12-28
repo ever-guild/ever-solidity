@@ -1,0 +1,9 @@
+pragma ever-solidity >= 0.66.0;
+pragma AbiHeader expire;
+pragma AbiHeader pubkey;
+
+import "Inc.tsol";
+
+contract Ext is Inc {
+    constructor() public {}
+}

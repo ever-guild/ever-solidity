@@ -43,9 +43,9 @@ macosSetup() {
   brew install boost
   brew install cmake
   brew install curl
-  if [ "$CI" = true ]; then
-      brew upgrade cmake
-  fi
+#  if [ "$CI" = true ]; then
+#      brew upgrade cmake
+#  fi
   commonSetup
 }
 

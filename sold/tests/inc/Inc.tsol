@@ -1,0 +1,6 @@
+pragma ever-solidity >= 0.66.0;
+
+abstract contract Inc {
+    function some() public {
+    }
+}
