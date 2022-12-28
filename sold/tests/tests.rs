@@ -204,3 +204,26 @@ fn test_private_function_ids() -> Status {
         ));
     Ok(())
 }
+
+#[test]
+fn test_ext() -> Status {
+    Command::cargo_bin(BIN_NAME)?
+        .arg("tests/Ext.tsol")
+        .arg("--output-dir")
+        .arg("tests")
+        .assert()
+        .success()
+        .stdout(predicate::str::contains("Contract successfully compiled"));
+
+    Command::cargo_bin(BIN_NAME)?
+        .arg("tests/Ext.tsol")
+        .arg("--output-dir")
+        .arg("tests")
+        .arg("--print-code")
+        .assert()
+        .success()
+        .stdout(predicate::str::contains("te6ccgECDQEAAU0ABCSK7VMg4wMgwP/jAiDA/uMC8gsKAgEMAsLtRNDXScMB+GYh2zzTAAGOH4MI1xgg+CjIzs7J+QAB0wABlNP/AwGTAvhC4vkQ8qiV0wAB8nri0z8B+EMhufK0IPgjgQPoqIIIG3dAoLnytPhj0x8B+CO88rnTHwHbPPI8BQMDSu1E0NdJwwH4ZiLQ1wsDqTgA3CHHAOMCIdcNH/K8IeMDAds88jwJCQMCKCCCED1NSk664wIgghBotV8/uuMCBgQCHjD4Qm7jAPhG8nPR2zzyAAUHAT7tRNDXScIBjhRw7UTQ9AWAQPQO8r3XC//4YnD4Y+MNCAMkMPhG8uBM+EJu4wDR2zzbPPIACAwHABz4Q/hCyMv/yz/Pg8ntVAAe7UTQ0//TP9MAMdH4Y/hiAAr4RvLgTAIQ9KQg9L3ywE4MCwAUc29sIDAuNjYuMAAA"));
+
+    remove_all_outputs("Ext")?;
+    Ok(())
+}
