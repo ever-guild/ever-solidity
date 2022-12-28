@@ -209,6 +209,8 @@ fn test_private_function_ids() -> Status {
 fn test_ext() -> Status {
     Command::cargo_bin(BIN_NAME)?
         .arg("tests/Ext.tsol")
+        .arg("--include-path")
+        .arg("inc")
         .arg("--output-dir")
         .arg("tests")
         .assert()
@@ -217,6 +219,8 @@ fn test_ext() -> Status {
 
     Command::cargo_bin(BIN_NAME)?
         .arg("tests/Ext.tsol")
+        .arg("--include-path")
+        .arg("inc")
         .arg("--output-dir")
         .arg("tests")
         .arg("--print-code")
