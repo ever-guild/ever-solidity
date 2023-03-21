@@ -54,7 +54,7 @@ windowsSetup() {
   tryCommand make || choco install -y make
   tryCommand curl || choco install -y curl
   tryCommand cmake || choco install -y cmake
-  cmake -P "${projectDir}/compiler/scripts/install_deps.cmake"
+  "${projectDir}/compiler/scripts/install_deps.ps1"
   commonSetup
 }
 
